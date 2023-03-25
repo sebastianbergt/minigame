@@ -3,11 +3,11 @@ use tetra::math::Vec2;
 use tetra::Context;
 
 pub struct Entity {
-    texture: Texture,
-    origin: Vec2<f32>,
-    scale: Vec2<f32>,
-    position: Vec2<f32>,
-    rotation: f32,
+    pub texture: Texture,
+    pub origin: Vec2<f32>,
+    pub scale: Vec2<f32>,
+    pub position: Vec2<f32>,
+    pub rotation: f32,
 }
 
 impl Entity {
