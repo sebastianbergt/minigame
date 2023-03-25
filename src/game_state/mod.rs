@@ -11,20 +11,23 @@ pub struct GameState {
 }
 
 impl GameState {
-    pub fn new(ctx: &mut Context) -> tetra::Result<Self> {
+    pub fn new(ctx: &mut Context) -> tetra::Result<GameState> {
         let skunk_texture = Texture::new(ctx, "./res/skunk_1F9A8.png")?;
-        let start_pose = Vec2::new(100.0f32, 150.0f32);
+        let start_position = Vec2::new(100.0, 150.0);
 
-        Ok(GameState {
-            player: Entity::new(skunk_texture, start_pose),
-        })
+        let player = Entity::new(skunk_texture)
+            .scale(0.5)
+            .position(start_position)
+            .rotation(std::f32::consts::FRAC_PI_2);
+
+        Ok(GameState { player: player })
     }
 }
 
 impl State for GameState {
     fn draw(&mut self, ctx: &mut Context) -> tetra::Result {
         graphics::clear(ctx, Color::BLACK);
-        self.player.texture.draw(ctx, self.player.position);
+        self.player.draw(ctx);
         Ok(())
     }
 }
