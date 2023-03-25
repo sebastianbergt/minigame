@@ -1,5 +1,6 @@
 mod entity;
 use entity::Entity;
+mod world;
 use tetra::graphics::{self, Color, Texture};
 use tetra::input::{self, Key};
 use tetra::math::Vec2;
@@ -15,6 +16,7 @@ const SCALE: f32 = 0.25;
 impl GameState {
     pub fn new(ctx: &mut Context) -> tetra::Result<GameState> {
         let skunk_texture = Texture::new(ctx, "./res/skunk_1F9A8.png")?;
+        let tree_texture = Texture::new(ctx, "./res/skunk_1F9A8.png")?;
         let start_position = Vec2::new(100.0, 150.0);
 
         let player = Entity::new(skunk_texture)
@@ -22,7 +24,7 @@ impl GameState {
             .position(start_position)
             .rotation(0.0);
 
-        let world: Vec<Entity> = Vec::new();
+        let world: Vec<Entity> = world::generate(SCALE, tree_texture);
 
         Ok(GameState {
             player: player,
