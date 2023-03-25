@@ -7,6 +7,7 @@ use tetra::{Context, State};
 
 pub struct GameState {
     player: Entity,
+    world: Vec<Entity>,
 }
 
 const SCALE: f32 = 0.25;
@@ -21,7 +22,12 @@ impl GameState {
             .position(start_position)
             .rotation(0.0);
 
-        Ok(GameState { player: player })
+        let world: Vec<Entity> = Vec::new();
+
+        Ok(GameState {
+            player: player,
+            world: world,
+        })
     }
 }
 
