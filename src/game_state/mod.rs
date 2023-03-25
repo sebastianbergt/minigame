@@ -16,7 +16,7 @@ impl GameState {
         let start_position = Vec2::new(100.0, 150.0);
 
         let player = Entity::new(skunk_texture)
-            .scale(0.5)
+            .scale(0.25)
             .position(start_position)
             .rotation(std::f32::consts::FRAC_PI_2);
 
